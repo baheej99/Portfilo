@@ -1,1343 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shah Mohammad Baheej · IT Specialist</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <title>Fatima Khatibi | Full Stack Developer</title>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #f8fafc;
+    }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    /* Hero with glassmorphism */
+    .hero {
+      background: linear-gradient(145deg, #0b1a33 0%, #1a3a5c 100%);
+      color: white;
+      padding: 70px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    .profile-img {
+      width: 170px;
+      height: 170px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(59, 130, 246, 0.3);
+      margin-bottom: 25px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      background: #1e3a5f;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.02) rotate(2deg);
+      box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.7), 0 0 0 4px #3b82f6;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .roles {
+      font-size: 1.15rem;
+      color: #94a3b8;
+      margin-bottom: 18px;
+      font-weight: 400;
+    }
+
+    .roles span {
+      color: #60a5fa;
+      margin: 0 8px;
+    }
+
+    .hero-bio {
+      max-width: 760px;
+      margin: 0 auto 30px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 24px 28px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      color: #e6edf5;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      transition: 0.3s;
+    }
+
+    .hero-bio:hover {
+      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .hero-bio strong {
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    .hero-bio i {
+      color: #60a5fa;
+      margin-right: 6px;
+    }
+
+    .hero-bio .highlight {
+      color: #fcd34d;
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Unified button color – all three primary buttons use the same style */
+    .btn-primary,
+    .btn-doc,
+    .btn-contact {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .btn-primary:hover,
+    .btn-doc:hover,
+    .btn-contact:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(59, 130, 246, 0.4);
+    }
+
+    /* outline style for secondary actions */
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid #64748b;
+    }
+
+    .btn-outline:hover {
+      border-color: #3b82f6;
+      color: #60a5fa;
+      background: rgba(59, 130, 246, 0.08);
+    }
+
+    /* Sections */
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #0f172a;
+      margin-bottom: 28px;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 55px;
+      height: 3px;
+      background: #3b82f6;
+      border-radius: 2px;
+    }
+
+    /* About Me section – new style */
+    .about-highlight {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px 36px;
+      box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.06);
+      border-left: 6px solid #3b82f6;
+      color: #1e293b;
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .about-highlight p {
+      margin-bottom: 1.2rem;
+    }
+
+    .about-highlight p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-highlight strong {
+      color: #1e40af;
+      font-weight: 600;
+    }
+
+    .about-highlight i {
+      color: #3b82f6;
+      margin-right: 4px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      color: #1e40af;
+      margin-bottom: 6px;
+    }
+
+    .card .meta {
+      font-size: 0.92rem;
+      color: #64748b;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .card ul {
+      margin-left: 18px;
+      margin-top: 8px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-item {
+      background: white;
+      padding: 20px 16px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .skill-item i {
+      font-size: 1.7rem;
+      color: #3b82f6;
+      margin-bottom: 10px;
+    }
+
+    .skill-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #1e293b;
+    }
+
+    .skill-item p {
+      font-size: 0.88rem;
+      color: #64748b;
+    }
+
+    /* Certificates */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .cert-item {
+      background: white;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cert-item i {
+      color: #3b82f6;
+      font-size: 1.2rem;
+    }
+
+    /* Document Center – enhanced with anti-download & anti-screenshot */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .doc-card {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid #e2e8f0;
+      transition: 0.2s;
+    }
+
+    .doc-card:hover {
+      box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.08);
+    }
+
+    .doc-card h4 {
+      color: #1e40af;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .doc-card p {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .doc-card .btn-outline-small {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 6px;
+      border: 1px solid #3b82f6;
+      color: #3b82f6;
+      background: transparent;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .doc-card .btn-outline-small:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    /* Viewer with overlay to block right-click, text selection, and context menu */
+    .inline-viewer {
+      margin-top: 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      pointer-events: auto;
+    }
+
+    .inline-viewer iframe {
+      width: 100%;
+      height: 280px;
+      border: none;
+      display: block;
+      pointer-events: auto;
+    }
+
+    /* Overlay to block right-click / save-as / screenshot attempts (visual deterrent + functional) */
+    .viewer-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 10;
+      cursor: default;
+      pointer-events: none; /* let clicks pass to iframe, but we use JS to block context menu */
+    }
+
+    .inline-viewer {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .hidden-viewer {
+      display: none;
+    }
+
+    /* Watermark / overlay message (visual only) */
+    .viewer-watermark {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      color: rgba(100, 116, 139, 0.25);
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 2px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(2px);
+      z-index: 5;
+      pointer-events: none;
+      font-weight: 400;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f1f5f9;
+      color: #1e40af;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .contact-link:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .profile-img {
+        width: 140px;
+        height: 140px;
+      }
+      section {
+        padding: 40px 20px;
+      }
+      .hero-bio {
+        padding: 18px 16px;
+        font-size: 0.98rem;
+      }
+      .about-highlight {
+        padding: 20px 18px;
+        font-size: 0.95rem;
+      }
+      .inline-viewer iframe {
+        height: 200px;
+      }
+    }
+
+    .doc-card .btn-outline-small i {
+      margin-right: 4px;
+    }
+
+    /* Disable text selection on whole doc section */
+    #documents {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    #documents .doc-card p,
+    #documents .doc-card h4 {
+      user-select: text;
+      -webkit-user-select: text;
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- =====================================================
-         NAVBAR
-    ====================================================== -->
+  <!-- Hero -->
+  <header class="hero">
+    <img src="profile.jpg" alt="Shah Mohammad Baheej" class="profile-img" />
+    <h1>Shah Mohammad Baheej</h1>
+    <div class="roles">
+      IT Specialist <span>•</span> Senior Network Engineer <span>•</span> Cybersecurity Analyst <span>•</span> University Lecturer
+    </div>
 
-    <header class="navbar">
+    <div class="hero-bio">
+      <p>
+        <i class="fas fa-quote-left" style="opacity:0.5;"></i>
+        I am an experienced <strong>IT Specialist</strong>, <strong>Senior Network Engineer</strong>, <strong>Cybersecurity Analyst</strong>, and <strong>University Lecturer</strong> with <span class="highlight">six years</span> of experience and a strong background in designing, implementing, securing, and managing modern IT and network infrastructures.
+      </p>
+    </div>
 
-        <div class="container nav-container">
+    <div class="hero-buttons">
+      <a href="resume.pdf" class="btn btn-primary" target="_blank">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
+      <a href="#documents" class="btn btn-doc">
+        <i class="fas fa-folder-open"></i> Document Center
+      </a>
+      <a href="#contact" class="btn btn-contact">
+        <i class="fas fa-envelope"></i> Contact
+      </a>
+    </div>
+  </header>
 
-            <!-- Logo -->
-            <a href="#home" class="logo" aria-label="Fatima Khatibi Home">
+  <!-- About Me -->
+  <section>
+    <h2>About Me</h2>
+    <div class="about-highlight">
+      <p>
+        I am an experienced <strong>IT Specialist</strong>, <strong>Senior Network Engineer</strong>, <strong>Cybersecurity Analyst</strong>, and <strong>University Lecturer</strong> with <strong>six years</strong> of experience and a strong background in designing, implementing, securing, and managing modern IT and network infrastructures. My expertise spans enterprise networking, cybersecurity, network administration, IT infrastructure, system troubleshooting, and technical education.
+      </p>
+      <p>
+        Throughout my professional career, I have worked with a wide range of networking and security technologies, including Cisco routing and switching, firewalls, VLANs, DHCP, NAT, VPNs, wireless networks, network monitoring, network security, and infrastructure management. I am passionate about building reliable, secure, scalable, and high-performance networks while proactively identifying and resolving technical challenges.
+      </p>
+      <p>
+        As a <strong>Cybersecurity Analyst</strong>, I have a strong interest in network security, threat identification, vulnerability assessment, security monitoring, incident analysis, and implementing effective security controls to protect organizational systems and data.
+      </p>
+      <p>
+        Alongside my technical career, I am also a <strong>University Lecturer</strong> and networking instructor, where I share practical and theoretical knowledge with students and aspiring IT professionals. My teaching areas include Computer Networking, CCNA, CCNP concepts, CompTIA A+, Networking Fundamentals, Cybersecurity, and IT technologies. I believe in combining academic knowledge with real-world practical experience to prepare students for professional careers in technology.
+      </p>
+      <p>
+        I am continuously developing my knowledge and skills in network engineering, cybersecurity, cloud technologies, systems administration, and emerging technologies, with a strong commitment to professional growth, innovation, and lifelong learning.
+      </p>
+      <p>
+        My mission is to design secure and reliable technology solutions, solve complex IT challenges, and empower the next generation of technology professionals through practical knowledge and education.
+      </p>
+    </div>
+  </section>
 
-                <span class="logo-symbol">FK</span>
+  <!-- Experience -->
+  <section>
+    <h2>Professional Experience</h2>
 
-                <span class="logo-text">
-                    FATIMA KHATIBI
-                </span>
+    <div class="card">
+      <h3>Network Specialist</h3>
+      <div class="meta">RDR MOD • July 2026 – Present</div>
+      <ul>
+        <li>Designing, implementing, and maintaining secure and high-availability network infrastructure</li>
+        <li>Configuring and managing enterprise routers, switches, firewalls, and wireless systems</li>
+        <li>Implementing network security policies, access control, and monitoring solutions</li>
+        <li>Troubleshooting complex network issues and ensuring continuous operational readiness</li>
+        <li>Supporting critical network services and coordinating with technical teams for infrastructure upgrades</li>
+        <li>Documenting network configurations, procedures, and security standards</li>
+      </ul>
+    </div>
 
-            </a>
+    <div class="card">
+      <h3>University Lecturer</h3>
+      <div class="meta">Jahan University, Kabul • Feb 2026 – Present (Part-time)</div>
+      <ul>
+        <li>Teaching Network Routing & Switching, Network Security, and Cisco CCNA courses</li>
+        <li>Delivering theoretical and practical lab training on TCP/IP, subnetting, VLANs, and routing protocols</li>
+        <li>Preparing course materials, conducting assessments, and guiding student projects</li>
+      </ul>
+    </div>
 
+    <div class="card">
+      <h3>Network Engineer</h3>
+      <div class="meta">Technical and Technology Research Administration (TTRA) • April 2022 – June 2025</div>
+      <ul>
+        <li>Designed, implemented, and managed LAN/WAN infrastructure including routers, switches, firewalls, and wireless networks</li>
+        <li>Configured Cisco, MikroTik, Starlink, and next-generation firewall solutions</li>
+        <li>Implemented routing protocols (OSPF, EIGRP, BGP) and site-to-site VPNs</li>
+        <li>Deployed IP telephony solutions and large-scale CCTV surveillance systems</li>
+        <li>Led technical teams during network deployments and infrastructure upgrades</li>
+      </ul>
+    </div>
 
-            <!-- Navigation -->
-            <nav class="nav-links" id="navLinks">
+    <div class="card">
+      <h3>Network Support Engineer</h3>
+      <div class="meta">Sky Connect Internet Service Company • Jan 2021 – Feb 2022</div>
+      <ul>
+        <li>Installed, configured, and troubleshot routers, switches, firewalls, and PtP links</li>
+        <li>Managed Cisco and MikroTik devices in ISP environments</li>
+        <li>Configured VLANs, NAT, DHCP, DNS, VPN, and firewall policies</li>
+      </ul>
+    </div>
+  </section>
 
-                <a href="#home" class="active">
-                    Home
-                </a>
+  <!-- Education -->
+  <section>
+    <h2>Education</h2>
+    <div class="card">
+      <h3>Bachelor Degree in Information Technology (IT)</h3>
+      <div class="meta">Jahan University • 2019 – 2022</div>
+    </div>
+    <div class="card">
+      <h3>Associate's Degree in Engineering</h3>
+      <div class="meta">TTTA • 2016 – 2017</div>
+    </div>
+    <div class="card">
+      <h3>Diploma in English Language</h3>
+      <div class="meta">Kabul Center Institute (KCI) • 2022</div>
+    </div>
+  </section>
 
-                <a href="#about">
-                    About
-                </a>
+  <!-- Projects -->
+  <section>
+    <h2>Key Projects</h2>
 
-                <a href="#skills">
-                    Skills
-                </a>
+    <div class="card">
+      <h3>Enterprise Network Design & Deployment – TTRA</h3>
+      <div class="meta">Network Engineer • Supporting 300+ users</div>
+      <p>Designed and deployed complete enterprise network infrastructure using fiber optic backbone, Cisco routers (3850/3650/3750), ASA 5545 firewall, 30 wireless access points, and 50 Cisco IP phones. Implemented VLANs, routing protocols (RIP, OSPF, EIGRP), and security best practices.</p>
+    </div>
 
-                <a href="#projects">
-                    Projects
-                </a>
+    <div class="card">
+      <h3>CCTV Surveillance System – TTRA</h3>
+      <div class="meta">100 Network Cameras + Biometric System</div>
+      <p>Designed and deployed a large-scale IP-based CCTV system with 100 cameras across multiple locations and 5 monitoring rooms for centralized security management.</p>
+    </div>
 
-                <a href="#experience">
-                    Experience
-                </a>
+    <div class="card">
+      <h3>Network Scalability in IoT Deployments</h3>
+      <div class="meta">Research Project • Jahan University</div>
+      <p>Conducted research on network scalability challenges in large-scale IoT environments, focusing on congestion, device management, addressing, interoperability, and security.</p>
+    </div>
 
-                <a href="#contact">
-                    Contact
-                </a>
+    <div class="card">
+      <h3>Master Plan & Enterprise Network Design – RDRMOD</h3>
+      <div class="meta">Network Specialist • RDR MOD</div>
+      <p>Developed a comprehensive master plan and enterprise network architecture for RDRMOD, including high-availability design, security zones, unified communication, and scalable infrastructure to support mission-critical operations.</p>
+    </div>
+  </section>
 
-            </nav>
+  <!-- DOCUMENT CENTER with anti-download & anti-screenshot -->
+  <section id="documents">
+    <h2><i class="fas fa-folder-open" style="color:#3b82f6; margin-right:8px;"></i> Document Center</h2>
+    <p style="color:#475569; margin-bottom:24px;">
+      <i class="fas fa-lock" style="color:#3b82f6;"></i> 
+      View my certificates, educational documents, ID, and more. 
+      <span style="background:#f1f5f9; padding:2px 10px; border-radius:20px; font-size:0.85rem; color:#475569;">
+        <i class="fas fa-eye-slash"></i> Download &amp; screenshot protected
+      </span>
+    </p>
 
-
-            <!-- Desktop Let's Talk Button -->
-            <a href="#contact" class="nav-button">
-
-                Let's Talk
-
-                <span>→</span>
-
-            </a>
-
-
-            <!-- =================================================
-                 ONE MOBILE HAMBURGER BUTTON
-            ================================================== -->
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="navLinks"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
+    <div class="doc-grid">
+      <!-- Technical Certificates -->
+      <div class="doc-card">
+        <h4><i class="fas fa-certificate" style="color:#3b82f6;"></i> Technical Certificates</h4>
+        <p>CCNA, CCNP, Cybersecurity, Cryptography &amp; more</p>
+        <button class="btn-outline-small toggle-viewer" data-target="techCerts"><i class="fas fa-eye"></i> View</button>
+        <div id="techCerts" class="inline-viewer hidden-viewer" oncontextmenu="return false;">
+          <iframe src="tech-certificates.pdf#toolbar=0&navpanes=0&scrollbar=0" title="Technical Certificates"></iframe>
+          <div class="viewer-watermark">&#9679; CONFIDENTIAL</div>
+          <div class="viewer-overlay"></div>
         </div>
-
-    </header>
-
-
-    <main>
-
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
-
-        <section class="hero" id="home">
-
-            <div class="container hero-container">
-
-                <div class="hero-content">
-
-                    <p class="small-title">
-                        Hi, I'm
-                    </p>
-
-                    <h1>
-                        Fatima <span>Khatibi</span>
-                    </h1>
-
-                    <h2>
-                        Full Stack Developer
-                    </h2>
-
-                    <p class="hero-description">
-
-                        I build modern, responsive, and user-friendly
-                        web applications with clean code and thoughtful
-                        design. I enjoy turning ideas into practical
-                        digital solutions using modern web technologies.
-
-                    </p>
-
-
-                    <div class="hero-buttons">
-
-                        <a
-                            href="#projects"
-                            class="primary-button"
-                        >
-                            View My Work
-                            <span>→</span>
-                        </a>
-
-                        <a
-                            href="#contact"
-                            class="secondary-button"
-                        >
-                            Let's Connect
-                            <span>→</span>
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Hero Image -->
-
-                <div class="hero-image">
-
-                    <div class="hero-circle"></div>
-
-                    <img
-                        src="images/download (9).jpg"
-                        class="img-hero"
-                        alt="Fatima Khatibi - Full Stack Developer"
-                    >
-
-                    <div class="dot-pattern"></div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             ABOUT
-        ====================================================== -->
-
-        <section class="about-section" id="about">
-
-            <div class="container about-container">
-
-                <!-- About Image -->
-
-                <div class="about-image">
-
-                    <img
-                        src="images/Remote coder.jpg"
-                        alt="Fatima Khatibi working as a developer"
-                    >
-
-                </div>
-
-
-                <!-- About Content -->
-
-                <div class="about-content">
-
-                    <p class="section-label">
-                        ABOUT ME
-                    </p>
-
-                    <h2>
-                        Turning ideas into
-                        meaningful digital experiences
-                    </h2>
-
-                    <p>
-
-                        I'm <strong>Fatima Khatibi</strong>, a Full Stack
-                        Developer with a Bachelor's degree in Computer
-                        Science. I enjoy creating modern websites and
-                        web applications that are simple, useful,
-                        responsive, and easy to use.
-
-                    </p>
-
-                    <p>
-
-                        My development journey has given me experience
-                        working with both frontend and backend
-                        technologies. I enjoy building interfaces with
-                        HTML, CSS, JavaScript, Bootstrap, React, and
-                        Tailwind CSS, while also developing backend
-                        applications using PHP, Laravel, and MySQL.
-
-                    </p>
-
-
-                    <p>
-
-                        I believe that becoming a good developer is a
-                        continuous journey. I keep learning, practicing,
-                        building projects, and improving my problem-solving
-                        skills so I can create better digital solutions.
-
-                    </p>
-
-
-                    <!-- Statistics -->
-
-                    <div class="statistics">
-
-                        <div class="stat">
-
-                            <strong>1+</strong>
-
-                            <span>
-                                Years of<br>
-                                Experience
-                            </span>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <strong>15+</strong>
-
-                            <span>
-                                Projects<br>
-                                Built
-                            </span>
-
-                        </div>
-
-
-                        <div class="stat">
-
-                            <strong>100%</strong>
-
-                            <span>
-                                Passion for<br>
-                                Learning
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Signature -->
-
-                    <div class="signature">
-                        Fatima Khatibi
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             SKILLS
-        ====================================================== -->
-
-        <section class="skills-section" id="skills">
-
-            <div class="container">
-
-                <div class="skills-box">
-
-                    <!-- Skills Header -->
-
-                    <div class="skills-header">
-
-                        <div>
-
-                            <p class="section-label">
-                                MY SKILLS
-                            </p>
-
-                            <h2>
-                                Technologies I Work With
-                            </h2>
-
-                        </div>
-
-
-                        <!-- Skill Tabs -->
-
-                        <div class="skill-tabs">
-
-                            <button
-                                type="button"
-                                class="active"
-                            >
-                                Frontend
-                            </button>
-
-                            <button type="button">
-                                Backend
-                            </button>
-
-                            <button type="button">
-                                Database
-                            </button>
-
-                            <button type="button">
-                                Tools &amp; Others
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Skills List -->
-
-                    <div class="skills-list">
-
-                        <!-- HTML -->
-
-                        <div class="skill-item">
-
-                            <div class="skill-icon html">
-                                <span>5</span>
-                            </div>
-
-                            <span class="skill-name">
-                                HTML5
-                            </span>
-
-                        </div>
-
-
-                        <!-- CSS -->
-
-                        <div class="skill-item">
-
-                            <div class="skill-icon css">
-                                <span>3</span>
-                            </div>
-
-                            <span class="skill-name">
-                                CSS3
-                            </span>
-
-                        </div>
-
-
-                        <!-- JavaScript -->
-
-                        <div class="skill-item">
-
-                            <div class="skill-icon js">
-                                <span>JS</span>
-                            </div>
-
-                            <span class="skill-name">
-                                JavaScript
-                            </span>
-
-                        </div>
-
-
-                        <!-- React -->
-
-                        <div class="skill-item">
-
-                            <div class="skill-icon react">
-
-                                <span class="react-symbol">
-                                    ⚛
-                                </span>
-
-                            </div>
-
-                            <span class="skill-name">
-                                React
-                            </span>
-
-                        </div>
-
-
-                        <!-- Bootstrap -->
-
-                        <div class="skill-item">
-
-                            <div class="skill-icon bootstrap">
-                                <span>B</span>
-                            </div>
-
-                            <span class="skill-name">
-                                Bootstrap
-                            </span>
-
-                        </div>
-
-
-                        <!-- GitHub -->
-
-                        <div class="skill-item">
-
-                            <div class="skill-icon github">
-
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    aria-hidden="true"
-                                >
-
-                                    <path
-                                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.01c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18A10.9 10.9 0 0 1 12 6.08c.97 0 1.94.13 2.85.38 2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14v3.18c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
-                                    >
-
-                                    </path>
-
-                                </svg>
-
-                            </div>
-
-                            <span class="skill-name">
-                                GitHub
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             PROJECTS
-        ====================================================== -->
-
-        <section class="projects-section" id="projects">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <p class="section-label">
-                            MY PROJECTS
-                        </p>
-
-                        <h2>
-                            Featured Projects
-                        </h2>
-
-                    </div>
-
-                    <a
-                        href="#projects"
-                        class="view-projects"
-                    >
-                        View My Projects →
-                    </a>
-
-                </div>
-
-
-                <div class="projects-grid">
-
-
-                    <!-- Project 1 -->
-
-                    <article class="project-card">
-
-                        <div class="project-image">
-
-                            <img
-                                src="images/obro.jpeg"
-                                alt="Oberlo Showroom Car Selling System"
-                            >
-
-                        </div>
-
-
-                        <div class="project-content">
-
-                            <h3>
-                                Oberlo Showroom
-                            </h3>
-
-                            <p>
-
-                                A full-stack car selling system developed
-                                with Laravel, PHP, MySQL, and Bootstrap.
-                                The platform includes car listings,
-                                search and filtering, authentication,
-                                CRUD operations, image management,
-                                and an administrative dashboard.
-
-                            </p>
-
-
-                            <div class="project-bottom">
-
-                                <div class="tags">
-
-                                    <span>Laravel</span>
-                                    <span>PHP</span>
-                                    <span>MySQL</span>
-                                    <span>Bootstrap</span>
-
-                                </div>
-
-
-                                <a
-                                    href="#contact"
-                                    class="project-arrow"
-                                    aria-label="Contact about Oberlo Showroom project"
-                                >
-                                    →
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Project 2 -->
-
-                    <article class="project-card">
-
-                        <div class="project-image">
-
-                            <img
-                                src="images/fk.png"
-                                alt="Fatima Khatibi Personal Portfolio"
-                            >
-
-                        </div>
-
-
-                        <div class="project-content">
-
-                            <h3>
-                                Personal Portfolio
-                            </h3>
-
-                            <p>
-
-                                A responsive personal portfolio website
-                                created to showcase my development skills,
-                                projects, experience, education, and
-                                professional journey with a clean and
-                                modern interface.
-
-                            </p>
-
-
-                            <div class="project-bottom">
-
-                                <div class="tags">
-
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
-                                    <span>Responsive</span>
-
-                                </div>
-
-
-                                <a
-                                    href="#contact"
-                                    class="project-arrow"
-                                    aria-label="Contact about Personal Portfolio project"
-                                >
-                                    →
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Project 3 -->
-
-                    <article class="project-card">
-
-                        <div class="project-image code-image">
-
-                            <img
-                                src="images/js.jpg"
-                                alt="JavaScript Projects"
-                            >
-
-                        </div>
-
-
-                        <div class="project-content">
-
-                            <h3>
-                                JavaScript Projects
-                            </h3>
-
-                            <p>
-
-                                A collection of practical JavaScript
-                                projects created to strengthen programming,
-                                problem-solving, arrays, objects,
-                                conditions, DOM manipulation, and
-                                real-world application logic.
-
-                            </p>
-
-
-                            <div class="project-bottom">
-
-                                <div class="tags">
-
-                                    <span>JavaScript</span>
-                                    <span>DOM</span>
-                                    <span>APIs</span>
-
-                                </div>
-
-
-                                <a
-                                    href="#contact"
-                                    class="project-arrow"
-                                    aria-label="Contact about JavaScript Projects"
-                                >
-                                    →
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             EXPERIENCE & EDUCATION
-        ====================================================== -->
-
-        <section
-            class="experience-section"
-            id="experience"
-        >
-
-            <div class="container">
-
-                <div class="section-heading simple-heading">
-
-                    <div>
-
-                        <p class="section-label">
-                            MY JOURNEY
-                        </p>
-
-                        <h2>
-                            Experience &amp; Education
-                        </h2>
-
-                    </div>
-
-                </div>
-
-
-                <div class="timeline">
-
-
-                    <!-- Experience 1 -->
-
-                    <div class="timeline-item">
-
-                        <div class="timeline-icon">
-                            💼
-                        </div>
-
-                        <h3>
-                            Web Developer Intern
-                        </h3>
-
-                        <p>
-                            NETLINKS Company
-                        </p>
-
-                        <span>
-                            2026 - Present
-                        </span>
-
-                    </div>
-
-
-                    <!-- Experience 2 -->
-
-                    <div class="timeline-item">
-
-                        <div class="timeline-icon">
-                            &lt;/&gt;
-                        </div>
-
-                        <h3>
-                            Full Stack Developer
-                        </h3>
-
-                        <p>
-                            Personal &amp; Freelance Projects
-                        </p>
-
-                        <span>
-                            2023
-                        </span>
-
-                    </div>
-
-
-                    <!-- Education -->
-
-                    <div class="timeline-item">
-
-                        <div class="timeline-icon">
-                            🎓
-                        </div>
-
-                        <h3>
-                            Bachelor of Computer Science
-                        </h3>
-
-                        <p>
-                            Salam University
-                        </p>
-
-                        <span>
-                            Completed
-                        </span>
-
-                    </div>
-
-
-                    <!-- Continuous Learning -->
-
-                    <div class="timeline-item">
-
-                        <div class="timeline-icon">
-                            📖
-                        </div>
-
-                        <h3>
-                            Continuous Learning
-                        </h3>
-
-                        <p>
-                            Web Development &amp; Programming
-                        </p>
-
-                        <span>
-                            Ongoing
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             TESTIMONIAL
-        ====================================================== -->
-
-        <section
-            class="testimonial-section"
-            id="testimonials"
-        >
-
-            <div class="container">
-
-                <div class="testimonial">
-
-                    <div class="quote">
-                        “
-                    </div>
-
-
-                    <div class="testimonial-text">
-
-                        <p>
-
-                            Fatima is a dedicated developer who approaches
-                            every project with curiosity, attention to
-                            detail, and a strong desire to learn. Her
-                            commitment to improving her technical skills
-                            and building practical solutions makes her a
-                            promising professional in web development.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="testimonial-author">
-
-                        <img
-                            src="images/test.webp"
-                            alt="Professional testimonial"
-                        >
-
-                        <div>
-
-                            <strong>
-                                — Professional Recommendation
-                            </strong>
-
-                            <span>
-                                Web Development
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             MY QUOTE
-        ====================================================== -->
-
-        <section class="quote-section">
-
-            <div class="container">
-
-                <div class="quote-box">
-
-                    <span class="quote-small">
-                        A REMINDER
-                    </span>
-
-
-                    <p
-                        class="arabic-quote"
-                        dir="rtl"
-                    >
-                        فَإِنَّ مَعَ الْعُسْرِ يُسْرًا
-                    </p>
-
-
-                    <p class="quote-english">
-                        “Indeed, with hardship comes ease.”
-                    </p>
-
-
-                    <span class="quote-source">
-                        Qur’an 94:5
-                    </span>
-
-
-                    <div class="quote-line"></div>
-
-
-                    <p class="personal-message">
-
-                        Keep learning.
-
-                        <span>
-                            Keep building.
-                        </span>
-
-                        <span>
-                            Keep believing.
-                        </span>
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             CONTACT
-        ====================================================== -->
-
-        <section
-            class="contact-section"
-            id="contact"
-        >
-
-            <div class="container contact-container">
-
-
-                <!-- Contact Information -->
-
-                <div class="contact-content">
-
-                    <p class="section-label">
-                        LET'S CONNECT
-                    </p>
-
-                    <h2>
-                        Let's build something
-                        amazing together!
-                    </h2>
-
-                    <p>
-
-                        Have a project in mind, an opportunity,
-                        or simply want to connect? I'd love to
-                        hear from you.
-
-                    </p>
-
-                    <p>
-
-                        Whether you're looking for a developer,
-                        have a project idea, or want to discuss
-                        technology, feel free to send me a message.
-
-                    </p>
-
-                </div>
-
-
-                <!-- Contact Form -->
-
-                <form
-                    class="contact-form"
-                    action="#"
-                    method="post"
-                >
-
-                    <!-- Name + Email -->
-
-                    <div class="form-row">
-
-                        <input
-                            type="text"
-                            placeholder="Full Name"
-                            name="name"
-                            autocomplete="name"
-                            required
-                        >
-
-                        <input
-                            type="email"
-                            placeholder="Your Email"
-                            name="email"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- Phone -->
-
-                    <input
-                        type="tel"
-                        placeholder="Your Phone Number"
-                        name="phone"
-                        autocomplete="tel"
-                    >
-
-
-                    <!-- Subject -->
-
-                    <input
-                        type="text"
-                        placeholder="Subject"
-                        name="subject"
-                    >
-
-
-                    <!-- Message -->
-
-                    <textarea
-                        placeholder="Your Message"
-                        name="message"
-                        rows="6"
-                        required
-                    ></textarea>
-
-
-                    <!-- Button -->
-
-                    <button type="submit">
-
-                        Send Message
-
-                        <span>
-                            →
-                        </span>
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer class="footer">
-
-        <div class="container footer-container">
-
-
-            <!-- Footer About -->
-
-            <div class="footer-about">
-
-                <a
-                    href="#home"
-                    class="footer-logo"
-                >
-
-                    <span>
-                        FK
-                    </span>
-
-                    FATIMA KHATIBI
-
-                </a>
-
-
-                <p>
-
-                    Full Stack Developer passionate about
-                    building modern web applications,
-                    solving problems through technology,
-                    and creating meaningful digital experiences.
-
-                </p>
-
-            </div>
-
-
-            <!-- Footer Links -->
-
-            <div class="footer-links">
-
-                <h4>
-                    Quick Links
-                </h4>
-
-
-                <div class="footer-columns">
-
-                    <div>
-
-                        <a href="#home">
-                            Home
-                        </a>
-
-                        <a href="#about">
-                            About
-                        </a>
-
-                        <a href="#skills">
-                            Skills
-                        </a>
-
-                    </div>
-
-
-                    <div>
-
-                        <a href="#projects">
-                            Projects
-                        </a>
-
-                        <a href="#experience">
-                            Experience
-                        </a>
-
-                        <a href="#contact">
-                            Contact
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Footer Connect -->
-
-            <div class="footer-connect">
-
-                <h4>
-                    Let's Connect
-                </h4>
-
-                <p>
-
-                    I'm open to learning opportunities,
-                    professional collaborations, internships,
-                    freelance projects, and exciting
-                    full-time opportunities.
-
-                </p>
-
-
-                <a
-                    href="#contact"
-                    class="footer-button"
-                >
-                    Let's Talk →
-                </a>
-
-            </div>
-
-
-            <!-- Social Links -->
-
-            <div class="social-links">
-
-                <a
-                    href="#"
-                    aria-label="LinkedIn"
-                >
-                    in
-                </a>
-
-                <a
-                    href="#"
-                    aria-label="GitHub"
-                >
-                    GH
-                </a>
-
-                <a
-                    href="#"
-                    aria-label="X"
-                >
-                    𝕏
-                </a>
-
-                <a
-                    href="#"
-                    aria-label="Behance"
-                >
-                    Be
-                </a>
-
-            </div>
-
+      </div>
+
+      <!-- English Certificates -->
+      <div class="doc-card">
+        <h4><i class="fas fa-language" style="color:#3b82f6;"></i> English Certificates</h4>
+        <p>English for IT 1&amp;2, TEFL 1&amp;2, SLT, KCI Diploma</p>
+        <button class="btn-outline-small toggle-viewer" data-target="engCerts"><i class="fas fa-eye"></i> View</button>
+        <div id="engCerts" class="inline-viewer hidden-viewer" oncontextmenu="return false;">
+          <iframe src="english-certificates.pdf#toolbar=0&navpanes=0&scrollbar=0" title="English Certificates"></iframe>
+          <div class="viewer-watermark">&#9679; CONFIDENTIAL</div>
+          <div class="viewer-overlay"></div>
         </div>
+      </div>
 
-
-        <!-- Footer Bottom -->
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 Fatima Khatibi. All rights reserved.
-            </p>
-
+      <!-- Educational Documents (NEW) -->
+      <div class="doc-card">
+        <h4><i class="fas fa-graduation-cap" style="color:#3b82f6;"></i> Educational Documents</h4>
+        <p>Bachelor's degree, Associate degree, transcripts &amp; diplomas</p>
+        <button class="btn-outline-small toggle-viewer" data-target="eduDocs"><i class="fas fa-eye"></i> View</button>
+        <div id="eduDocs" class="inline-viewer hidden-viewer" oncontextmenu="return false;">
+          <iframe src="educational-documents.pdf#toolbar=0&navpanes=0&scrollbar=0" title="Educational Documents"></iframe>
+          <div class="viewer-watermark">&#9679; CONFIDENTIAL</div>
+          <div class="viewer-overlay"></div>
         </div>
+      </div>
 
-    </footer>
+      <!-- Job Experience -->
+      <div class="doc-card">
+        <h4><i class="fas fa-briefcase" style="color:#3b82f6;"></i> Job Experience</h4>
+        <p>Employment letters, reference documents, and experience records</p>
+        <button class="btn-outline-small toggle-viewer" data-target="jobExp"><i class="fas fa-eye"></i> View</button>
+        <div id="jobExp" class="inline-viewer hidden-viewer" oncontextmenu="return false;">
+          <iframe src="job-experience.pdf#toolbar=0&navpanes=0&scrollbar=0" title="Job Experience"></iframe>
+          <div class="viewer-watermark">&#9679; CONFIDENTIAL</div>
+          <div class="viewer-overlay"></div>
+        </div>
+      </div>
 
+      <!-- National ID Card -->
+      <div class="doc-card">
+        <h4><i class="fas fa-id-card" style="color:#3b82f6;"></i> National ID Card</h4>
+        <p>Official identification document</p>
+        <button class="btn-outline-small toggle-viewer" data-target="nationalId"><i class="fas fa-eye"></i> View</button>
+        <div id="nationalId" class="inline-viewer hidden-viewer" oncontextmenu="return false;">
+          <iframe src="national-id.pdf#toolbar=0&navpanes=0&scrollbar=0" title="National ID Card"></iframe>
+          <div class="viewer-watermark">&#9679; CONFIDENTIAL</div>
+          <div class="viewer-overlay"></div>
+        </div>
+      </div>
 
-    <!-- =====================================================
-         MOBILE NAVBAR JAVASCRIPT
-    ====================================================== -->
+      <!-- Photo & Signature (NEW) -->
+      <div class="doc-card">
+        <h4><i class="fas fa-image" style="color:#3b82f6;"></i> Photo &amp; Signature</h4>
+        <p>Official photo and digital signature</p>
+        <button class="btn-outline-small toggle-viewer" data-target="photoSig"><i class="fas fa-eye"></i> View</button>
+        <div id="photoSig" class="inline-viewer hidden-viewer" oncontextmenu="return false;">
+          <iframe src="photo-signature.pdf#toolbar=0&navpanes=0&scrollbar=0" title="Photo & Signature"></iframe>
+          <div class="viewer-watermark">&#9679; CONFIDENTIAL</div>
+          <div class="viewer-overlay"></div>
+        </div>
+      </div>
+    </div>
 
+    <!-- JavaScript for toggling viewer + anti-screenshot / right-click protection -->
     <script>
-
-        // Get hamburger button
-        const menuToggle = document.getElementById("menuToggle");
-
-        // Get navigation menu
-        const navLinks = document.getElementById("navLinks");
-
-
-        // Open / close mobile menu
-        menuToggle.addEventListener("click", function (event) {
-
-            // Prevent the outside-click event
-            // from closing the menu immediately
-            event.stopPropagation();
-
-            // Toggle menu
-            navLinks.classList.toggle("show");
-
-            // Toggle hamburger animation
-            menuToggle.classList.toggle("active");
-
-
-            // Check if menu is open
-            const isOpen =
-                navLinks.classList.contains("show");
-
-
-            // Update accessibility attribute
-            menuToggle.setAttribute(
-                "aria-expanded",
-                isOpen ? "true" : "false"
-            );
-
-
-            // Update accessibility label
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close navigation menu"
-                    : "Open navigation menu"
-            );
-
-        });
-
-
-        // Close menu when a navigation link is clicked
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(function (link) {
-
-                link.addEventListener("click", function () {
-
-                    navLinks.classList.remove("show");
-
-                    menuToggle.classList.remove("active");
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    menuToggle.setAttribute(
-                        "aria-label",
-                        "Open navigation menu"
-                    );
-
-                });
-
-            });
-
-
-        // Close menu when clicking outside navbar
-        document.addEventListener("click", function (event) {
-
-            const clickedInsideNavbar =
-                event.target.closest(".navbar");
-
-
-            if (!clickedInsideNavbar) {
-
-                navLinks.classList.remove("show");
-
-                menuToggle.classList.remove("active");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation menu"
-                );
-
+      (function() {
+        // Toggle viewer visibility
+        const toggles = document.querySelectorAll('.toggle-viewer');
+        toggles.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('data-target');
+            const viewer = document.getElementById(targetId);
+            if (viewer) {
+              viewer.classList.toggle('hidden-viewer');
+              if (viewer.classList.contains('hidden-viewer')) {
+                this.innerHTML = '<i class="fas fa-eye"></i> View';
+              } else {
+                this.innerHTML = '<i class="fas fa-eye-slash"></i> Hide';
+              }
             }
-
+          });
         });
 
+        // BLOCK all right-click on every .inline-viewer and its children (including iframe)
+        document.querySelectorAll('.inline-viewer').forEach(el => {
+          el.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          });
+        });
 
+        // Additional: block keyboard shortcuts for save (Ctrl+S, Ctrl+Shift+S, etc.)
+        document.addEventListener('keydown', function(e) {
+          // Ctrl+S or Cmd+S
+          if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+          // Ctrl+Shift+S
+          if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'S') {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+          // Ctrl+P (print) – blocks print dialog which can be used to "save as PDF"
+          if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+            const active = document.activeElement;
+            if (active && active.closest('.inline-viewer')) {
+              e.preventDefault();
+              e.stopPropagation();
+              return false;
+            }
+          }
+        }, true);
+
+        // Also block Print Screen key (basic) – can't fully block OS-level screenshot
+        document.addEventListener('keyup', function(e) {
+          if (e.key === 'PrintScreen') {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+        });
+
+        // Prevent drag-and-drop of iframe content (visual)
+        document.querySelectorAll('.inline-viewer iframe').forEach(iframe => {
+          iframe.setAttribute('draggable', 'false');
+        });
+
+        console.log('Document Center: Download & screenshot protection active.');
+      })();
     </script>
+  </section>
+
+  <!-- Technical Skills -->
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <i class="fas fa-network-wired"></i>
+        <h4>Routing &amp; Switching</h4>
+        <p>OSPF, EIGRP, BGP, RIP, VLANs, Layer 3</p>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-shield-alt"></i>
+        <h4>Network Security</h4>
+        <p>Firewall, VPN, Cisco ASA, Endpoint</p>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-server"></i>
+        <h4>Infrastructure</h4>
+        <p>Cisco, MikroTik, Starlink, Virtualization</p>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-phone"></i>
+        <h4>IP Telephony</h4>
+        <p>Cisco IP Phones, VoIP Solutions</p>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-video"></i>
+        <h4>Surveillance</h4>
+        <p>CCTV Design, Biometric Systems</p>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h4>Teaching</h4>
+        <p>CCNA, Network Security, Lab</p>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-code"></i>
+        <h4>Web Development</h4>
+        <p>HTML, CSS, JavaScript, React</p>
+      </div>
+      <div class="skill-item">
+        <i class="fas fa-shield-virus"></i>
+        <h4>Cybersecurity Tools</h4>
+        <p>Wireshark, Nmap, Metasploit, SIEM</p>
+      </div>
+      <div class="skill-item">
+        <i class="fab fa-python"></i>
+        <h4>Python</h4>
+        <p>Automation, Scripting, Network tools</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates list -->
+  <section>
+    <h2>Certificates</h2>
+    <div class="certs-grid">
+      <div class="cert-item"><i class="fas fa-certificate"></i> CCNA</div>
+      <div class="cert-item"><i class="fas fa-certificate"></i> CCNP Fundamentals</div>
+      <div class="cert-item"><i class="fas fa-certificate"></i> Introduction to Cyber Security</div>
+      <div class="cert-item"><i class="fas fa-certificate"></i> Intro to Cryptography &amp; Network Security</div>
+      <div class="cert-item"><i class="fas fa-certificate"></i> English for IT 1 &amp; 2</div>
+      <div class="cert-item"><i class="fas fa-certificate"></i> IT for Business Success</div>
+      <div class="cert-item"><i class="fas fa-certificate"></i> Network Workshop</div>
+      <div class="cert-item"><i class="fas fa-certificate"></i> TEFL 1 &amp; 2 / SLT</div>
+    </div>
+  </section>
+
+  <!-- My Website -->
+  <section>
+    <h2>My Website</h2>
+    <div style="background:white; border-radius:12px; padding:20px 24px; border:1px solid #e2e8f0; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <i class="fas fa-globe" style="font-size:2rem; color:#3b82f6;"></i>
+      <span style="font-size:1.2rem; font-weight:500;">baheej.xo.je</span>
+      <a href="https://baheej.xo.je" target="_blank" class="btn btn-primary" style="margin-left:auto; padding:10px 24px;">
+        <i class="fas fa-external-link-alt"></i> Visit
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <div class="contact-box">
+      <p style="color:#475569; margin-bottom:8px;">
+        Feel free to reach out for professional opportunities, collaboration, or academic discussions.
+      </p>
+      <p style="color:#64748b; font-size:0.95rem;">Kabul, Afghanistan</p>
+
+      <div class="contact-links">
+        <a href="mailto:baheej99@gmail.com" class="contact-link">
+          <i class="fas fa-envelope"></i> baheej99@gmail.com
+        </a>
+        <a href="https://wa.me/93779295935" class="contact-link" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="tel:+93779295935" class="contact-link">
+          <i class="fas fa-phone"></i> +93 779 295 935
+        </a>
+        <a href="https://www.linkedin.com/in/shah-mohammad-baheej-a61559404" class="contact-link" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://www.facebook.com/Shahmohammad.Baheej" class="contact-link" target="_blank">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://baheej99.github.io" class="contact-link" target="_blank">
+          <i class="fas fa-globe"></i> GitHub.io
+        </a>
+        <a href="https://baheej.xo.je" class="contact-link" target="_blank">
+          <i class="fas fa-globe"></i> baheej.xo.je
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Shah Mohammad Baheej — IT Specialist | Senior Network Engineer | Cybersecurity Analyst | University Lecturer
+  </footer>
 
 </body>
-
 </html>
